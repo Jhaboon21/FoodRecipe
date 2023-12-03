@@ -15,7 +15,7 @@ app = Flask(__name__)
 #app.debug = True
 app.config['SQLALCHEMY_DATABASE_URI'] = (
     #os.environ.get('DATABASE_URL', 'postgresql:///food'))
-    os.environ.get('DATABASE_URL', 'postgres://postgres:F2i899oEoMthVGi@food-recipe-capstone-one-jh.flycast:5432'))
+    os.environ.get('DATABASE_URL', 'postgresql://postgresql:F2i899oEoMthVGi@food-recipe-capstone-one-jh.flycast:5432'))
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
