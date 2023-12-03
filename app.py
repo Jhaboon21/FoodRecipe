@@ -14,7 +14,8 @@ key = '4c38af58cbe74ecfac48f137ccfef40b' # this should be in a secret file, but 
 app = Flask(__name__)
 #app.debug = True
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    os.environ.get('DATABASE_URL', 'postgresql:///food'))
+    #os.environ.get('DATABASE_URL', 'postgresql:///food'))
+    os.environ.get('DATABASE_URL', 'postgres://postgres:F2i899oEoMthVGi@food-recipe-capstone-one-jh.flycast:5432'))
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
