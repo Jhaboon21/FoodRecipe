@@ -12,7 +12,7 @@
     <ul>
         {% for r in res.results %}
         <li class="items">
-            <img src="{{ r.image }}" alt="{{ r.title}}"> <a href="{{ url_for('show_recipe', recipe_id=r.id) }}" class="img-tile"> {{ r.title }}</a>
+            <img src="{{ r.image }}" alt="{{ r.title}}" class="img-tile"><a href="{{ url_for('show_recipe', recipe_id=r.id) }}" >{{ r.title }}</a>
         </li>
         {% endfor %}
     </ul>

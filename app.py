@@ -7,7 +7,6 @@ from sqlalchemy.exc import IntegrityError
 
 from forms import UserAddForm, UserEditForm, RecipeAddForm, RecipeEditForm, LoginForm, MealAddForm, RefrigeratorForm
 from models import db, connect_db, User, Meal_Plan, Shopping_Cart, Recipe, Cuisine
-from seed import addSeed
 
 CURR_USER_KEY = "curr_user"
 key = '4c38af58cbe74ecfac48f137ccfef40b' # this should be in a secret file, but for testing/grading purposes, I'll leave this here
@@ -24,7 +23,6 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "it's a secret")
 #toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
-addSeed()
 
 ##############################################################################
 # User signup/login/logout
