@@ -559,12 +559,9 @@ p.card-bio {
 } 
 
 #ingredientSuggestions {
-  position: absolute;
   background-color: lightblue;
-  margin-top: 35px;
-  width: 80%;
-  left: 10%;
-  right: 25%;
+  margin-left: 5px;
+  margin-right: 6px;
   border: 2px dotted #ccc;
 } 
 

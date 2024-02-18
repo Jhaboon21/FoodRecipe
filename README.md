@@ -1,5 +1,6 @@
-# [Food Recipe Search](https://jhaboon-capstoneone.onrender.com)
+# [Food Recipe Search](https://jhaboon-capstoneone.onrender.com/) - deployed link
 ## A web application that allows users to search, save, and plan food recipes built with data from [spoonacularAPI](https://spoonacular.com/food-api/docs).
+
 
 Users can search for recipes or browse through different cuisines. Recipes will show the serving sizes, how long it'll take to make, ingredients, and instructions. Users can also signup/login to save recipes to view later or add them to a meal plan to plan their meals(breakfast, lunch, dinner) for the week. While logged in, users can add ingredients to their 'refrigerator' that acts as what they currently have in their home and can use it to search for recipes that include those ingredients.
 

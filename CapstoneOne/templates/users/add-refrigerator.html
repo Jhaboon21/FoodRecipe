@@ -16,9 +16,9 @@
             <span class="text-danger">{{ error }}</span>
           {% endfor %}
           <h3>{{ field.label }}</h3>
-          {{ field(placeholder=field.label.text, class="form-control ingredient-form") }}
+          {{ field(placeholder=field.label.text, class="ingredient-form") }}
         {% endfor %}
-  
+        <div id="choices-container"></div>
         <button class="btn btn-primary btn-lg btn-block">Confirm!</button>
       </form>
     </div>
