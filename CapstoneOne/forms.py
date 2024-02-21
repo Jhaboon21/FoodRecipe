@@ -2,6 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, TextAreaField, SelectField, IntegerField
 from wtforms.validators import DataRequired, Email, Length
 
+CUISINE_CHOICES = [("african", "African"), ("asian", "Asian"), ("american", "American"), ("british", "British"), ("cajun", "Cajun"), ("caribbean", "Caribbean"), ("chinese", "Chinese"), ("eastern european", "Eastern European"), ("european", "European"), ("french", "French"), ("german", "German"), ("greek", "Greek"), ("indian", "Indian"), ("irish", "Irish"), ("italian", "Italian"), ("japanese", "Japanese"), ("jewish", "Jewish"), ("korean", "Korean"), ("latin american", "Latin American"), ("mediterranean", "Mediterranean"), ("mexican", "Mexican"), ("middle eastern", "Middle Eastern"), ("nordic", "Nordic"), ("southern", "Southern"), ("spanish", "Spanish"), ("thai", "Thai"), ("vietnamese", "Vietnamese")]
+
 class UserAddForm(FlaskForm):
     """Form for adding users."""
 
@@ -29,8 +31,7 @@ class RecipeAddForm(FlaskForm):
     image = TextAreaField("Image URL", validators=[DataRequired()])
     summary = TextAreaField("(Optional) Summary")
     instructions =TextAreaField("Instructions", validators=[DataRequired()])
-    cuisine = SelectField("Type of Cuisine", 
-                          choices=[("african", "African"), ("asian", "Asian"), ("american", "American"), ("british", "British"), ("cajun", "Cajun"), ("caribbean", "Caribbean"), ("chinese", "Chinese"), ("eastern european", "Eastern European"), ("european", "European"), ("french", "French"), ("german", "German"), ("greek", "Greek"), ("indian", "Indian"), ("irish", "Irish"), ("italian", "Italian"), ("japanese", "Japanese"), ("jewish", "Jewish"), ("korean", "Korean"), ("latin american", "Latin American"), ("mediterranean", "Mediterranean"), ("mexican", "Mexican"), ("middle eastern", "Middle Eastern"), ("nordic", "Nordic"), ("southern", "Southern"), ("spanish", "Spanish"), ("thai", "Thai"), ("vietnamese", "Vietnamese")])
+    cuisine = SelectField("Type of Cuisine", choices=CUISINE_CHOICES)
     servings = IntegerField("Servings", validators=[DataRequired()])
     ready = IntegerField("Ready In Minutes", validators=[DataRequired()])
 
@@ -40,8 +41,7 @@ class RecipeEditForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     summary = TextAreaField("(Optional) Summary")
     instructions =TextAreaField("Instructions", validators=[DataRequired()])
-    cuisine = SelectField("Type of Cuisine", 
-                          choices=[("african", "African"), ("asian", "Asian"), ("american", "American"), ("british", "British"), ("cajun", "Cajun"), ("caribbean", "Caribbean"), ("chinese", "Chinese"), ("eastern european", "Eastern European"), ("european", "European"), ("french", "French"), ("german", "German"), ("greek", "Greek"), ("indian", "Indian"), ("irish", "Irish"), ("italian", "Italian"), ("japanese", "Japanese"), ("jewish", "Jewish"), ("korean", "Korean"), ("latin american", "Latin American"), ("mediterranean", "Mediterranean"), ("mexican", "Mexican"), ("middle eastern", "Middle Eastern"), ("nordic", "Nordic"), ("southern", "Southern"), ("spanish", "Spanish"), ("thai", "Thai"), ("vietnamese", "Vietnamese")])
+    cuisine = SelectField("Type of Cuisine", choices=CUISINE_CHOICES)
 
 class LoginForm(FlaskForm):
     """Login form."""

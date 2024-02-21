@@ -8,8 +8,10 @@ db = SQLAlchemy()
 
 def connect_db(app):
     """Connect to database."""
-    db.app = app
-    db.init_app(app)
+    with app.app_context():
+        db.app = app
+        db.init_app(app)
+        db.create_all()
 
 class User(db.Model):
     """User in the system."""
@@ -18,9 +20,9 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    email = db.Column(db.Text, nullable=False, unique=True)
+    email = db.Column(db.Text, nullable=False, unique=True) # Todo: implement an email validation here.
 
-    username = db.Column(db.Text, nullable=False, unique=True)
+    username = db.Column(db.Text, nullable=False, unique=True) # Todo: implement username validation (like checking for length/special characters)
 
     first_name = db.Column(db.String(), nullable=False)
 
@@ -32,9 +34,9 @@ class User(db.Model):
 
     bio = db.Column(db.Text)
 
-    password = db.Column(db.Text, nullable=False)
+    password = db.Column(db.String(60), nullable=False)
 
-    saved_recipes = db.Column(db.Integer, db.ForeignKey('recipes.id', ondelete='cascade'))
+    saved_recipes = db.Column(db.Integer, db.ForeignKey('recipes.id', name="users_saved_recipes_fk", ondelete='cascade'))
 
     recipe = db.relationship("Recipe", backref="user", cascade="all,delete", primaryjoin="User.id == Recipe.created_by")
 
@@ -99,7 +101,7 @@ class Recipe(db.Model):
 
     instructions = db.Column(db.Text, nullable=False)
 
-    created_by = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False) 
+    created_by = db.Column(db.Integer, db.ForeignKey('users.id', name="users_recipe_fk", ondelete='cascade'), nullable=False) 
 
     created_at = db.Column(db.DateTime, default=datetime.utcnow(), nullable=False) 
 
@@ -116,7 +118,7 @@ class Shopping_Cart(db.Model):
 
     title = db.Column(db.Text, nullable=False, unique=True) 
 
-    user = db.relationship('User')
+    user = db.relationship('User', backref='shopping_cart')
 
 class Meal_Plan(db.Model):
     """Info with a User's 'To-Eat-List' for a give day for a week."""
@@ -128,8 +130,8 @@ class Meal_Plan(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     recipe_id = db.Column(db.Integer, nullable=False)
-
     recipe_name = db.Column(db.Text, nullable=False)
+    # consider creating a foreign key relationship with Recipe to reduce redundancy
 
     day = db.Column(db.String(), nullable=False, ) 
 
