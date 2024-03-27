@@ -160,7 +160,7 @@ def homepage():
 def get_random_recipe(res):
     summary = res["recipes"][0]['summary']
     clean_summary = BeautifulSoup(summary, 'html.parser')
-    instructions = res["recipes"][0]['instructions']
+    instructions = res["recipes"][0]['instructions'] or ""
     clean_instructions = BeautifulSoup(instructions, 'html.parser')
 
     recipes = {'id': res["recipes"][0]['id'], 
